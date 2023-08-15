@@ -37,4 +37,13 @@ export class AuthenticationService {
       })
     );
   }
+
+  register(user : User): Observable<any>{
+    return this.http.post(API_URL + 'sign-up', user)
+  }
+
+  logout(){
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(new User);
+  }
 }
