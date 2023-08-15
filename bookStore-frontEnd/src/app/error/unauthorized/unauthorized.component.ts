@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./unauthorized.component.css']
 })
 export class UnauthorizedComponent {
-
+  constructor() {
+  }
 }

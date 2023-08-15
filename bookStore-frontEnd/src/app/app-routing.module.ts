@@ -26,4 +26,10 @@ const routes : Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  constructor(private router : Router) {
+    this.router.errorHandler = (error:any) =>{
+      this.router.navigate(['404'])
+    };
+  }
+}
