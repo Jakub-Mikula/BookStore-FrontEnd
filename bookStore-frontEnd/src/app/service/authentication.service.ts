@@ -27,7 +27,7 @@ export class AuthenticationService {
   }
 
   login(user : User) : Observable<any>{
-    return this.http.post<any>(API_URL + 'sign-in', user).pipe(
+    return this.http.post<any>(API_URL + '/sign-in', user).pipe(
       map(response => {
         if (response){
           localStorage.setItem('currentUser', JSON.stringify(response));
@@ -39,7 +39,7 @@ export class AuthenticationService {
   }
 
   register(user : User): Observable<any>{
-    return this.http.post(API_URL + 'sign-up', user)
+    return this.http.post(API_URL + '/sign-up', user)
   }
 
   logout(){
