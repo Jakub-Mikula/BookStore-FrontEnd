@@ -11,6 +11,7 @@ import { AdminComponent } from './admin/admin/admin.component';
 import { NotFoundComponent } from './error/not-found/not-found.component';
 import { UnauthorizedComponent } from './error/unauthorized/unauthorized.component';
 import {RouterOutlet} from "@angular/router";
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {RouterOutlet} from "@angular/router";
   imports: [
     BrowserModule,
     FontAwesomeModule,
-    RouterOutlet
+    RouterOutlet,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
