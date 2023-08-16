@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="card-body">
-        <table class="table table-striped">
+        <table class="table table-striped table-hover">
           <thead>
           <tr>
             <th scope="col">#</th>
@@ -21,7 +21,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of bookList, index as ind">
+          <tr *ngFor="let item of bookList; index as ind">
             <th scope="row">{{ind + 1}}</th>
             <td>{{item.title}}</td>
             <td>{{item.price | currency : "USD"}}</td>
