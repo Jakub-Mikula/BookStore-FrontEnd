@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from "../../models/user.model";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { AuthenticationService } from "../../service/authentication.service";
+import { AuthenticationService } from "../../services/authentication.service";
 import { Router } from "@angular/router";
 
 @Component({

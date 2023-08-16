@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {User} from "./models/user.model";
-import {AuthenticationService} from "./service/authentication.service";
+import {AuthenticationService} from "./services/authentication.service";
 import {Router} from "@angular/router";
 import {Role} from "./models/role.enum";
 
