@@ -8,15 +8,15 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export abstract class RequestBaseService {
 
-  protected currentUser : User = new User();
+  protected currentUser: User = new User;
 
-  constructor(private authenticationService : AuthenticationService, protected http: HttpClient) {
+  protected constructor(protected authenticationService: AuthenticationService, protected http: HttpClient) {
     this.authenticationService.currentUser.subscribe(data => {
       this.currentUser = data;
     });
   }
 
-  get getHeaders() : HttpHeaders{
+  get getHeaders() : HttpHeaders {
     return new HttpHeaders(
       {
         authorization: 'Bearer ' + this.currentUser?.token,

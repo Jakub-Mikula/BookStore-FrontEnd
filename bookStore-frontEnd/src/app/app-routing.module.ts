@@ -26,7 +26,7 @@ const routes : Routes = [
   {path : "admin",
     component : AdminComponent,
     canActivate : [AuthGuard],
-    data : { roles : [Role.ADMIN]}
+    data : {roles : [Role.ADMIN]}
 },
   {path : "404", component : NotFoundComponent},
   {path : "401", component : UnauthorizedComponent}
