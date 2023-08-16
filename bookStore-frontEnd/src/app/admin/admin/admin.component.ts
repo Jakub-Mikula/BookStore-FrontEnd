@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Book } from "../../models/book.model";
 import { BookService } from "../../services/book.service";
+import { BookComponent } from "../book/book.component";
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +11,10 @@ import { BookService } from "../../services/book.service";
 export class AdminComponent implements OnInit {
 
   bookList: Array<Book> = [];
+  selectedBook : Book = new Book();
+  errorMessage : string = "";
 
+  @ViewChild(BookComponent) child : BookComponent | undefined;
   constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
@@ -19,9 +23,32 @@ export class AdminComponent implements OnInit {
       this.bookList = data;
     });
   }
+  createBookRequest(){
+    this.selectedBook = new Book();
+    this.child?.showBookModal();
+  }
 
+  editBookObject(item : Book){
+    this.selectedBook = Object.assign({}, item);
+    this.child?.showBookModal();
+  }
 
+  saveBookWatcher(book: Book) {
+    let itemIndex = this.bookList.findIndex(item => item.id === book.id);
+    if (itemIndex !== -1) {
+      this.bookList[itemIndex] = book;
+    } else {
+      this.bookList.push(book);
+    }
+  }
 
-
+  deleteBook(item : Book, index : number){
+    this.bookService.deleteBook(item).subscribe(data => {
+      this.bookList.splice(index, 1);
+    }, error => {
+      this.errorMessage = "Unexpected error occurred";
+      console.log(error);
+    });
+  }
 
 }

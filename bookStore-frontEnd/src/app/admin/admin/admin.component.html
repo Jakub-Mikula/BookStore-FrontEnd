@@ -6,6 +6,9 @@
           <div class="col-6">
             <h3>All Books</h3>
           </div>
+          <div class="col-6 text-end">
+            <button class="btn btn-primary" (click)="createBookRequest()">Create Book</button>
+          </div>
         </div>
       </div>
       <div class="card-body">
@@ -21,15 +24,15 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of bookList; index as ind">
-            <th scope="row">{{ind + 1}}</th>
+          <tr *ngFor="let item of bookList; index as index">
+            <th scope="row">{{index + 1}}</th>
             <td>{{item.title}}</td>
             <td>{{item.price | currency : "USD"}}</td>
             <td>{{item.author}}</td>
             <td>{{item.createTime | date : "medium"}}</td>
             <td>
-              <button class="btn btn-primary me-1">Edit</button>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-primary me-1" (click)="editBookObject(item)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteBook(item, index)">Delete</button>
             </td>
           </tr>
           </tbody>
@@ -38,3 +41,5 @@
     </div>
   </div>
 </div>
+
+<app-book [book]="selectedBook" (save)="saveBookWatcher($event)"></app-book>
